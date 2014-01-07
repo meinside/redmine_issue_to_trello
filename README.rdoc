@@ -1,3 +1,39 @@
 = redmine_issue_to_trello
 
-Description goes here
+A simple redmine plugin for posting trello cards on every redmine issue creation.
+
+All new issues created on redmine are automatically uploaded to a preconfigured Trello board/list.
+
+This plugin does nothing else for now.
+
+
+== Requirements
+
+It was tested only on Ruby 1.9.3 and Redmine 2.4.2.stable.12484.
+
+'ruby-trello' gem is required.
+
+
+== How to use
+
+=== clone source codes
+
+  cd /some/where/redmine/plugins/
+  git clone https://github.com/meinside/redmine_issue_to_trello.git ./redmine_issue_to_trello
+
+=== configure it
+
+  cd /some/where/redmine/plugins/redmine_issue_to_trello/config/
+  cp trello_config.yml.sample trello_config.yml
+  vi trello_config.yml
+
+=== and restart the server
+
+
+== Todos
+
+* add test codes
+* add some more options for:
+  * customizing description format
+  * posting to different boards/lists
+  * and more
