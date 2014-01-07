@@ -1,0 +1,5 @@
+---
+trello:
+  app_key: "can be generated at: https://trello.com/1/appKey/generate"
+  user_token: "can be generated with following instruction: https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user"
+  list_id: "can be obtained with 'bin/trello_list_ids'"
