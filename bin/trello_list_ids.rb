@@ -13,15 +13,16 @@
 require_relative '../lib/trello_helper'
 
 if __FILE__ == $0
-  path = File.join(File.dirname(__FILE__), "..", "config", "trello_config.yml")
-
-  if !File.exists?(path)
+  begin
+    config = TrelloHelper.config
+  rescue
     puts "* config file does not exist: copy config/trello_config.yml.sample and edit it"
     exit 1
-  elsif ARGV.count <= 0
+  end
+
+  if ARGV.count <= 0
     puts "* usage: #{__FILE__} [YOUR_BOARD_ID]"
   else
-    config = TrelloHelper.read_config(path)
     app_key = config["app_key"]
     user_token = config["user_token"]
 

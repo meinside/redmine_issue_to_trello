@@ -27,6 +27,8 @@ It was tested only on Ruby 1.9.3 and Redmine 2.4.2.stable.12484.
   cp trello_config.yml.sample trello_config.yml
   vi trello_config.yml
 
+Alternatively, you can also copy the configuration file to Redmine's main `config/` directory.
+
 === and restart the server
 
 
