@@ -2,10 +2,10 @@
 # coding: UTF-8
 
 # lib/trello_helper.rb
-# 
+#
 # created on : 2014.01.07
 # last update: 2014.01.07
-# 
+#
 # by meinside@gmail.com
 
 require 'trello'
@@ -13,6 +13,22 @@ require 'trello'
 require 'yaml'
 
 class TrelloHelper
+
+  # Loads the configuration from either the Rails' configuration directory
+  # or the plugin directory.
+  #
+  # @return [Hash]
+  def self.config
+    config_file = "trello_config.yml"
+    config = File.join(File.dirname(__FILE__), "..", "..", "..", 'config', config_file)
+
+    if !File.exists? config
+      config = File.join(File.dirname(__FILE__), "..", "config", config_file)
+    end
+
+    TrelloHelper.read_config(config)
+  end
+
 	private
 	def initialize(app_key, user_token)
     @app_key = app_key
@@ -76,7 +92,7 @@ class TrelloHelper
   end
 
   # post a new card on Trello
-  # 
+  #
   # @param list_id [String] Trello list id
   # @param name [String] name of the card
   # @param description [String] description of the card

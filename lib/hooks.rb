@@ -4,7 +4,7 @@ class Hooks < Redmine::Hook::ViewListener
 	def controller_issues_new_after_save(context = {})
     begin
       # read config
-      config = TrelloHelper.read_config(File.join(File.dirname(__FILE__), "..", "config", "trello_config.yml"))
+      config = TrelloHelper.config
       app_key = config["app_key"]
       user_token = config["user_token"]
       list_id = config["list_id"]
