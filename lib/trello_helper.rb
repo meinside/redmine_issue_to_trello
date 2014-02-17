@@ -4,16 +4,14 @@
 # lib/trello_helper.rb
 #
 # created on : 2014.01.07
-# last update: 2014.01.07
+# last update: 2014.02.17
 #
 # by meinside@gmail.com
 
 require 'trello'
-
 require 'yaml'
 
 class TrelloHelper
-
   # Loads the configuration from either the Rails' configuration directory
   # or the plugin directory.
   #
@@ -29,11 +27,11 @@ class TrelloHelper
     TrelloHelper.read_config(config)
   end
 
-	private
-	def initialize(app_key, user_token)
+  private
+  def initialize(app_key, user_token)
     @app_key = app_key
     @user_token = user_token
-	end
+  end
 
   public
   # read config file at given path

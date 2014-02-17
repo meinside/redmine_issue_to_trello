@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 # coding: UTF-8
 
-# trello_list_ids.rb
+# bin/trello_list_ids.rb
 # 
 # show list ids and names for given board id
 # 
 # created on : 2014.01.07
-# last update: 2014.01.07
+# last update: 2014.02.17
 # 
 # by meinside@gmail.com
 

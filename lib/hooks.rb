@@ -1,7 +1,19 @@
+#!/usr/bin/env ruby
+# coding: UTF-8
+
+# lib/hooks.rb
+# 
+# hooks
+# 
+# created on : 2014.01.07
+# last update: 2014.02.17
+# 
+# by meinside@gmail.com
+
 require_relative 'trello_helper'
 
 class Hooks < Redmine::Hook::ViewListener
-	def controller_issues_new_after_save(context = {})
+  def controller_issues_new_after_save(context = {})
     begin
       # read config
       config = TrelloHelper.config
@@ -29,5 +41,5 @@ DESCRIPTION
     rescue
       Rails.logger.error "While sending Redmine issue to Trello: #{$!}"
     end
-	end
+  end
 end
