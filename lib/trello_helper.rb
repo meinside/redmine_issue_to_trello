@@ -58,7 +58,7 @@ class TrelloHelper
       @@authenticated = TrelloHelper.new(app_key, user_token)
     end
   rescue
-    puts "# TrelloPoster.authenticate failed - #{$!}"
+    puts "# TrelloHelper.authenticate failed - #{$!}"
     nil
   end
 
