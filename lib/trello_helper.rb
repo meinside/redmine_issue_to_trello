@@ -4,7 +4,7 @@
 # lib/trello_helper.rb
 #
 # created on : 2014.01.07
-# last update: 2014.02.17
+# last update: 2014.02.18
 #
 # by meinside@gmail.com
 
@@ -50,7 +50,7 @@ class TrelloHelper
   #
   # @param app_key [String] Trello app key
   # @param user_token [String] Trello user token
-  # @return [TrelloPoster,nil] authenticated TrelloPoster object, nil when error
+  # @return [TrelloHelper,nil] authenticated TrelloHelper object, nil when error
   def self.authenticate(app_key, user_token)
     Trello.configure do |config|
       config.developer_public_key = app_key
