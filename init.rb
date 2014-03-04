@@ -1,7 +1,6 @@
 require 'redmine'
 
-# lib/hooks.rb
-require_dependency 'hooks'
+require_dependency 'redmine-trello.rb'
 
 Redmine::Plugin.register :redmine_issue_to_trello do
   name 'Redmine Issue To Trello'
