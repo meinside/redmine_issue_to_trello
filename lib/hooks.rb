@@ -27,17 +27,11 @@ module RedmineTrello
         issue_description = context[:issue].description
         issue_duedate = context[:issue].due_date
 
+        card_formatter = CardFormatter.new(context[:project], context[:issue])
+
         # post a new card
         trello = TrelloHelper.authenticate(app_key, user_token)
-        trello.post(list_id, "#{project_name} / #{issue_subject}",
-<<DESCRIPTION
-  #{project_name} / #{issue_subject}
-
-  * due date: #{issue_duedate}
-
-  #{issue_description}
-DESCRIPTION
-        )
+        trello.post(list_id, card_formatter.title, card_formatter.description)
       rescue
         Rails.logger.error "While sending Redmine issue to Trello: #{$!}"
       end
