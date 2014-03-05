@@ -2,19 +2,18 @@
 # coding: UTF-8
 
 # lib/hooks.rb
-# 
+#
 # hooks
-# 
+#
 # created on : 2014.01.07
 # last update: 2014.02.17
-# 
+#
 # by meinside@gmail.com
+#
+module RedmineTrello
 
-require_relative 'trello_helper'
-
-class Hooks < Redmine::Hook::ViewListener
-  def controller_issues_new_after_save(context = {})
-    begin
+  class Hooks < Redmine::Hook::ViewListener
+    def controller_issues_new_after_save(context = {})
       # read config
       config = TrelloHelper.config
       app_key = config["app_key"]
@@ -27,19 +26,12 @@ class Hooks < Redmine::Hook::ViewListener
       issue_description = context[:issue].description
       issue_duedate = context[:issue].due_date
 
+      card_formatter = CardFormatter.new(context[:project], context[:issue])
+
       # post a new card
       trello = TrelloHelper.authenticate(app_key, user_token)
-      trello.post(list_id, "#{project_name} / #{issue_subject}", 
-<<DESCRIPTION
-#{project_name} / #{issue_subject}
-
-* due date: #{issue_duedate}
-
-#{issue_description}
-DESCRIPTION
-      )
-    rescue
-      Rails.logger.error "While sending Redmine issue to Trello: #{$!}"
+      trello.post(list_id, card_formatter.title, card_formatter.description)
     end
   end
+
 end
